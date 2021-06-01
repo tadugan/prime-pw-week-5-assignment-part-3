@@ -59,3 +59,7 @@ showCollection(collection);
 showCollection(findByArtist('The White Stripes'));
 showCollection(findByArtist('KE$HA'));
 showCollection(findByArtist('Foo Fighters'));
+
+// Left of at stretch goals, stiil need to complete
+//
+//
