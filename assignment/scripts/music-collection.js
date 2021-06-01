@@ -15,4 +15,12 @@ function addToCollection(title, artist, yearPublished) {
 } // end addToCollection
 
 //testing addToCollection
-addToCollection('White Blood Cells', 'The White Stripes', 1999)
+console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999));
+console.log(addToCollection('Icky Thump', 'The White Stripes', 2007));
+console.log(addToCollection('Oh No', 'OK GO', 2005));
+console.log(addToCollection('Led Zeppelin IV', 'Led Zeppelin', 1971));
+console.log(addToCollection('There Is Nothing Left TO Lose', 'Foo Fighters', 1999));
+console.log(addToCollection('Pinkerton', 'Weezer', 1996));
+
+// logging whole collection
+console.log(collection);
