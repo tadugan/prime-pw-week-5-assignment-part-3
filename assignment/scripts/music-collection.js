@@ -3,6 +3,7 @@ console.log('***** Music Collection *****')
 // this variable stores the record objects we will create
 let collection = [];
 
+// This function adds album objects to the collection array
 function addToCollection(title, artist, yearPublished) {
   console.log('in addToCollection');
   let record = {
@@ -14,6 +15,7 @@ function addToCollection(title, artist, yearPublished) {
   return record;
 } // end addToCollection
 
+// This function console logs each album's properties from an array
 function showCollection(array) {
   console.log('In showCollection');
   console.log(`There are ${array.length} albums in this collection`);
@@ -21,6 +23,22 @@ function showCollection(array) {
     console.log(`${eachAlbum.title} by ${eachAlbum.artist}, published in ${eachAlbum.yearPublished}`);
   } // end of for loop
 } // end of showCollection function
+
+// This function searches an array for all the object with a matching artist property
+function findByArtist(artist) {
+  let matchingArtists = [];
+  console.log(`Searching your collection for ${artist}...`);
+  for (i=0; i<collection.length; i++) {
+    if (collection[i].artist === artist) {
+      console.log('We found a match!!');
+      matchingArtists.push(collection[i]);
+    } // adds object to array of artist matches
+    else {
+      console.log(`${artist} does not match ${collection[i].artist}`);
+    } // logs message if artist does not match
+  } //end of for loop
+  return matchingArtists;
+} // end findByArtist function
 
 //testing addToCollection
 console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999));
@@ -35,3 +53,9 @@ console.log(collection);
 
 // test showCollection function
 showCollection(collection);
+
+// test findByArtist function
+// I reused the showCollection function to display the results of findByArtist
+showCollection(findByArtist('The White Stripes'));
+showCollection(findByArtist('KE$HA'));
+showCollection(findByArtist('Foo Fighters'));
