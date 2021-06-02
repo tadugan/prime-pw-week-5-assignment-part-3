@@ -23,13 +23,32 @@ let emptySearchObject = {
 
 }
 
+// Track list arrays for track objects
+let whiteBloodCellsTracks = [];
+let ickyThumpTracks =[];
+let ohNoTracks = [];
+let ledZeppelinIVTracks = [];
+let thereIsNothingLeftToLoseTracks = [];
+let pinkertonTracks = [];
+// End of track list arrays
+
+// function to add tracks info to track arrays
+function addTracks (trackArrayName, trackName, trackDuration) {
+  let trackInfo = {
+    name: trackName,
+    duration: trackDuration
+  }
+  trackArrayName.push(trackInfo)
+} // end addTracks function
+
 // This function adds album objects to the collection array
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, trackArray) {
   console.log('in addToCollection');
   let record = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    tracks: trackArray
   } // end of object creation
   collection.push(record);
   return record;
@@ -80,6 +99,26 @@ function search(searchCriteria) {
   } // end of for loop
   return searchArray;
 } // end search function
+
+// adds track info to track arrays
+addTracks(whiteBloodCellsTracks, 'Dead Leaves and the Dirty Ground', '3:05');
+addTracks(whiteBloodCellsTracks, 'Hotel Yorba', '2:10');
+addTracks(whiteBloodCellsTracks, 'I\'m Finding It Harder To Be a Gentleman' , '2:54');
+addTracks(ickyThumpTracks, 'Icky Thump', '4:15');
+addTracks(ickyThumpTracks, 'You Don\'t Know What Love Is (You Just Do As You\'re Told)', '3:55' );
+addTracks(ickyThumpTracks, '300 M.P.H. Torrential Outpour Blues', '5:29');
+addTracks(ohNoTracks, 'Invincible', '3:31');
+addTracks(ohNoTracks, 'Do What You Want', '3:06');
+addTracks(ohNoTracks, 'Here It Goes Again', '3:00');
+addTracks(ledZeppelinIVTracks, 'Black Dog', '4:56');
+addTracks(ledZeppelinIVTracks, 'Rock and Roll', '3:41');
+addTracks(ledZeppelinIVTracks, 'The Battle of Evermore', '5:52');
+addTracks(thereIsNothingLeftToLoseTracks, 'Stacked Actors', '4:16');
+addTracks(thereIsNothingLeftToLoseTracks, 'Breakout', '3:21');
+addTracks(thereIsNothingLeftToLoseTracks, 'Learn To Fly', '3:56');
+addTracks(pinkertonTracks, 'Tired of Sex', '3:01');
+addTracks(pinkertonTracks, 'Getchoo', '2:53');
+addTracks(pinkertonTracks, 'No Other One', '2:08');
 
 //testing addToCollection
 console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999));
