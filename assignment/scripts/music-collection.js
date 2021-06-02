@@ -3,11 +3,21 @@ console.log('***** Music Collection *****')
 // this variable stores the record objects we will create
 let collection = [];
 
-// search object for search function
+// search objects for search function
 let rayCharlesSearch = {
   artist: 'Ray Charles',
   year: 1957
-} // end of Ray Charles Search
+}
+
+let stripesSearch2007 = {
+  artist: 'The White Stripes',
+  year: 2007
+}
+
+let fooSearch = {
+  artist: 'Foo Fighters',
+  year: 1999
+}
 
 // This function adds album objects to the collection array
 function addToCollection(title, artist, yearPublished) {
@@ -47,7 +57,18 @@ function findByArtist(artist) {
 } // end findByArtist function
 
 function search(searchCriteria) {
-  console.log(`Searching for ${searchCriteria} in your collection.`);
+  console.log(`Searching for artist: ${searchCriteria.artist}, year: ${searchCriteria.year} in your collection.`);
+  let searchArray = [];
+  for (i=0; i<collection.length; i++) {
+    if (searchCriteria.artist === collection[i].artist && searchCriteria.year === collection[i].yearPublished) {
+      console.log('We have a match!');
+      searchArray.push(collection[i]);
+    } // end if either criteria matches
+    else {
+      console.log(`No album matching artist: ${searchCriteria.artist}, year: ${searchCriteria.year} has been found.`);;
+    } // end of else if criteria doesn't match this album
+  } // end of for loop
+  return searchArray;
 } // end search function
 
 //testing addToCollection
@@ -57,6 +78,9 @@ console.log(addToCollection('Oh No', 'OK GO', 2005));
 console.log(addToCollection('Led Zeppelin IV', 'Led Zeppelin', 1971));
 console.log(addToCollection('There Is Nothing Left To Lose', 'Foo Fighters', 1999));
 console.log(addToCollection('Pinkerton', 'Weezer', 1996));
+
+// adding Ray Charles album to test search function
+// console.log(addToCollection('Ray Charles', 'Ray Charles', 1957));
 
 // logging whole collection
 console.log(collection);
@@ -72,3 +96,5 @@ showCollection(findByArtist('Foo Fighters'));
 
 // test search function
 console.log(search(rayCharlesSearch));
+console.log(search(stripesSearch2007));
+console.log(search(fooSearch));
