@@ -19,6 +19,10 @@ let fooSearch = {
   year: 1999
 }
 
+let emptySearchObject = {
+
+}
+
 // This function adds album objects to the collection array
 function addToCollection(title, artist, yearPublished) {
   console.log('in addToCollection');
@@ -57,6 +61,12 @@ function findByArtist(artist) {
 } // end findByArtist function
 
 function search(searchCriteria) {
+  if (searchCriteria === undefined) {
+    return collection;
+  } // end function if searchCriteria is empty
+  else if (searchCriteria.artist === undefined || searchCriteria.year === undefined) {
+    return collection;
+  } // end function if searchCriteria is an empty object
   console.log(`Searching for artist: ${searchCriteria.artist}, year: ${searchCriteria.year} in your collection.`);
   let searchArray = [];
   for (i=0; i<collection.length; i++) {
@@ -98,3 +108,7 @@ showCollection(findByArtist('Foo Fighters'));
 console.log(search(rayCharlesSearch));
 console.log(search(stripesSearch2007));
 console.log(search(fooSearch));
+
+// test empty searchCriteria
+console.log(search());
+console.log(search(emptySearchObject));
