@@ -3,6 +3,12 @@ console.log('***** Music Collection *****')
 // this variable stores the record objects we will create
 let collection = [];
 
+// search object for search function
+let rayCharlesSearch = {
+  artist: 'Ray Charles',
+  year: 1957
+} // end of Ray Charles Search
+
 // This function adds album objects to the collection array
 function addToCollection(title, artist, yearPublished) {
   console.log('in addToCollection');
@@ -40,6 +46,10 @@ function findByArtist(artist) {
   return matchingArtists;
 } // end findByArtist function
 
+function search(searchCriteria) {
+  console.log(`Searching for ${searchCriteria} in your collection.`);
+} // end search function
+
 //testing addToCollection
 console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999));
 console.log(addToCollection('Icky Thump', 'The White Stripes', 2007));
@@ -60,6 +70,5 @@ showCollection(findByArtist('The White Stripes'));
 showCollection(findByArtist('KE$HA'));
 showCollection(findByArtist('Foo Fighters'));
 
-// Left of at stretch goals, stiil need to complete
-//
-//
+// test search function
+console.log(search(rayCharlesSearch));
