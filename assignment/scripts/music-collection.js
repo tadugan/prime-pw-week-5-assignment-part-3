@@ -60,6 +60,9 @@ function showCollection(array) {
   console.log(`There are ${array.length} albums in this collection`);
   for (let eachAlbum of array) {
     console.log(`${eachAlbum.title} by ${eachAlbum.artist}, published in ${eachAlbum.yearPublished}`);
+    for (i=0; i<eachAlbum.tracks.length; i++) {
+      console.log(`   ${i+1}. ${eachAlbum.tracks[i].name}: ${eachAlbum.tracks[i].duration}`);
+    } // loops through and logs all tracks+duration
   } // end of for loop
 } // end of showCollection function
 
@@ -121,12 +124,12 @@ addTracks(pinkertonTracks, 'Getchoo', '2:53');
 addTracks(pinkertonTracks, 'No Other One', '2:08');
 
 //testing addToCollection
-console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999));
-console.log(addToCollection('Icky Thump', 'The White Stripes', 2007));
-console.log(addToCollection('Oh No', 'OK GO', 2005));
-console.log(addToCollection('Led Zeppelin IV', 'Led Zeppelin', 1971));
-console.log(addToCollection('There Is Nothing Left To Lose', 'Foo Fighters', 1999));
-console.log(addToCollection('Pinkerton', 'Weezer', 1996));
+console.log(addToCollection('White Blood Cells', 'The White Stripes', 1999, whiteBloodCellsTracks));
+console.log(addToCollection('Icky Thump', 'The White Stripes', 2007, ickyThumpTracks));
+console.log(addToCollection('Oh No', 'OK GO', 2005, ohNoTracks));
+console.log(addToCollection('Led Zeppelin IV', 'Led Zeppelin', 1971, ledZeppelinIVTracks));
+console.log(addToCollection('There Is Nothing Left To Lose', 'Foo Fighters', 1999, thereIsNothingLeftToLoseTracks));
+console.log(addToCollection('Pinkerton', 'Weezer', 1996, pinkertonTracks));
 
 // adding Ray Charles album to test search function
 // console.log(addToCollection('Ray Charles', 'Ray Charles', 1957));
