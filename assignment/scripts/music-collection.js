@@ -82,25 +82,65 @@ function findByArtist(artist) {
   return matchingArtists;
 } // end findByArtist function
 
+// WORKING SEARCH FUNCTION - before adding track name search
+// function search(searchCriteria) {
+//   if (searchCriteria === undefined) {
+//     return collection;
+//   } // end function if searchCriteria is empty
+//   else if (searchCriteria.artist === undefined || searchCriteria.year === undefined) {
+//     return collection;
+//   } // end function if searchCriteria is an empty object
+//   console.log(`Searching for artist: ${searchCriteria.artist}, year: ${searchCriteria.year} in your collection.`);
+//   let searchArray = [];
+//   for (i=0; i<collection.length; i++) {
+//     if (searchCriteria.artist === collection[i].artist && searchCriteria.year === collection[i].yearPublished) {
+//       console.log('We have a match!');
+//       searchArray.push(collection[i]);
+//     } // end if either criteria matches
+//     else {
+//       console.log(`No album matching artist: ${searchCriteria.artist}, year: ${searchCriteria.year} has been found.`);;
+//     } // end of else if criteria doesn't match this album
+//   } // end of for loop
+//   return searchArray;
+// } // end search function
+
 function search(searchCriteria) {
   if (searchCriteria === undefined) {
     return collection;
-  } // end function if searchCriteria is empty
-  else if (searchCriteria.artist === undefined || searchCriteria.year === undefined) {
-    return collection;
-  } // end function if searchCriteria is an empty object
+  } // ends function if empty object or no onject
+  // else if statement runs if this is an artist/year search
+  else if (searchCriteria.artist) {
   console.log(`Searching for artist: ${searchCriteria.artist}, year: ${searchCriteria.year} in your collection.`);
   let searchArray = [];
   for (i=0; i<collection.length; i++) {
     if (searchCriteria.artist === collection[i].artist && searchCriteria.year === collection[i].yearPublished) {
-      console.log('We have a match!');
+      console.log('We have an artist/year match!');
       searchArray.push(collection[i]);
-    } // end if either criteria matches
+    } // end else if either criteria matches
     else {
-      console.log(`No album matching artist: ${searchCriteria.artist}, year: ${searchCriteria.year} has been found.`);;
+      console.log(`This album does not match artist: ${searchCriteria.artist}, year: ${searchCriteria.year}.`);;
     } // end of else if criteria doesn't match this album
-  } // end of for loop
-  return searchArray;
+    } // end of for loop
+      return searchArray;
+  } // end of search for artist & year option
+  // else if runs if this is a track name search
+  else if (searchCriteria.length > 0) {
+    console.log(`Searching for tracks named: ${searchCriteria}...`);
+    for (let eachAlbum of collection) {
+      for (i=0; i<eachAlbum.tracks.length; i++) {
+        if (eachAlbum.tracks[i].name === searchCriteria) {
+          console.log('We have found a match!');
+          console.log(`"${searchCriteria}" appears on the album "${eachAlbum.title}"!!`);
+          return 'Successful Search!!';
+        } // end if name matches
+      } // end cycle through album tracks
+    } // end album checking
+    return 'Unsuccessful Search...';
+  } // end of track name search option
+  // if object is empty  else returns collection
+  else {
+    return collection;
+  }
 } // end search function
 
 // adds track info to track arrays
@@ -154,3 +194,8 @@ console.log(search(fooSearch));
 // test empty searchCriteria
 console.log(search());
 console.log(search(emptySearchObject));
+
+// test track name search function
+console.log(search('Do What You Want'));
+console.log(search('Banana Pancakes'));
+console.log(search('Hotel Yorba'));
