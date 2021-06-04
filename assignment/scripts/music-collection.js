@@ -104,11 +104,17 @@ function findByArtist(artist) {
 //   return searchArray;
 // } // end search function
 
+// I designed my search function to take either a object search parameter (with
+// artist and year values) or a string parameter to search for a track name.
 function search(searchCriteria) {
   if (searchCriteria === undefined) {
+    // returns collection if no searchCriteria is provided
+    console.log('No search criteria provided...');
     return collection;
   } // ends function if empty object or no onject
   // else if statement runs if this is an artist/year search
+  // By checking if the searchCriteria has an artist value (and is therefore truthy)
+  // the function determines if the searchCriteria is an object or a string.
   else if (searchCriteria.artist) {
   console.log(`Searching for artist: ${searchCriteria.artist}, year: ${searchCriteria.year} in your collection.`);
   let searchArray = [];
@@ -139,6 +145,8 @@ function search(searchCriteria) {
   } // end of track name search option
   // if object is empty  else returns collection
   else {
+    // returns collection if an empty search object is provided, or none of the other
+    // if statements match.
     return collection;
   }
 } // end search function
